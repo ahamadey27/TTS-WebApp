@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTS-WebApp", "TTS-WebApp.csproj", "{FCDBE03B-0EAC-08C3-7A21-1E0BE069E105}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FCDBE03B-0EAC-08C3-7A21-1E0BE069E105}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCDBE03B-0EAC-08C3-7A21-1E0BE069E105}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCDBE03B-0EAC-08C3-7A21-1E0BE069E105}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCDBE03B-0EAC-08C3-7A21-1E0BE069E105}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4CD51F5F-8682-4ED3-89E8-C8E4D0E75460}
+	EndGlobalSection
+EndGlobal
