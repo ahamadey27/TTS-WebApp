@@ -83,11 +83,11 @@ The system comprises a client-side interface (web browser), a backend web applic
 # Development Plan (MVP)
 
 ## Phase 1: Azure Resource Setup & CNV Lite Creation
-- [ ] Create/Confirm Azure Subscription.
-- [ ] Create Azure AI Speech service resource (consider F0 tier for setup, noting cost uncertainties for CNV Lite).
-- [ ] Access Speech Studio.
-- [ ] Create a new CNV Lite project for "Alex Hamadey's" voice (e.g., en-US).
-- [ ] Perform microphone setup and online recording of 20-50 utterances using Microsoft-provided scripts (Voice Talent: Alex Hamadey).
+- [x] Create/Confirm Azure Subscription.
+- [x] Create Azure AI Speech service resource (Standard S0 tier required for CNV Lite).
+- [x] Access Speech Studio.
+- [x] Create a new CNV Lite project for "Alex Hamadey's" voice (e.g., en-US).
+- [x] Perform microphone setup and online recording of 20-50 utterances using Microsoft-provided scripts (Voice Talent: Alex Hamadey).
 - [ ] Train the CNV Lite model.
 - [ ] Review and test the trained model's audio output in Speech Studio.
 - [ ] Record and submit Alex Hamadey's voice talent consent statement.
@@ -168,37 +168,8 @@ The system comprises a client-side interface (web browser), a backend web applic
 
 ---
 
-# Key Considerations
+# Notes
 
-- **Character Limits & Billing:**
-    - Enforce 500-character limit client-side and server-side.
-    - Azure AI Speech bills per character synthesized (including punctuation). CNV Lite synthesis is typically at a higher rate than standard neural voices.
-- **Error Handling:**
-    - Frontend: Clear user feedback for input errors, API failures.
-    - Backend: Robust try-catch, log detailed errors (especially `SpeechSynthesisCancellationDetails.ErrorDetails`), return appropriate HTTP status codes.
-- **Security:**
-    - **API Key Management:** Store `SPEECH_KEY`, `CUSTOM_VOICE_ENDPOINT_ID` in Azure App Service Application Settings (not in code or `appsettings.json` committed to repo).
-    - **Input Sanitization:** While Azure Speech handles text, primary concern is length enforcement.
-    - **HTTPS:** Enforce via `UseHttpsRedirection()`.
-    - **XSRF/CSRF:** Consider anti-forgery tokens if API evolves, though less critical for this simple, single-purpose endpoint.
-- **Cost Management (Crucial):**
-    - **CNV Lite Training:** One-time cost (<1 compute hour).
-    - **CNV Lite Endpoint Hosting:** **Recurring hourly cost while endpoint is active.** This is a significant ongoing cost.
-    - **CNV Lite Synthesis:** Per-character cost, higher than standard neural voices.
-    - **F0 Tier Uncertainty:**
-        - It's **highly uncertain** if the F0 Speech tier's "1 free custom model endpoint hosting" applies to CNV Lite TTS endpoints. Assume it does **not** and will be billable.
-        - It's **highly uncertain** if the F0 Speech tier's "0.5M free Neural TTS characters" apply to CNV Lite synthesis. Assume it does **not** and will be billable at custom voice rates.
-    - **Azure App Service (F1):** Free, but with limitations (60 CPU mins/day). Monitor usage; upgrade to B1 (Basic) if needed (incurs cost).
-    - **Recommendation:** **Suspend or delete the CNV Lite endpoint in Speech Studio when not actively developing/demonstrating to avoid continuous hosting charges.**
-- **User Experience (UX):**
-    - Provide clear feedback during audio generation (loading states, disabled button).
-    - Ensure audio player is accessible.
-    - Clearly communicate input constraints (500 chars).
-    - User-friendly error messages.
-- **CNV Lite and "Business Use" for Portfolio:**
-    - Microsoft's terms for CNV Lite state that "business use" requires an application for full CNV access. A public portfolio might be interpreted as such.
-    - **Recommendations:** Seek clarification from Microsoft, consider applying for full CNV access, or clearly label the project as a "technical demonstration for evaluation/personal experimentation" if used publicly.
-- **Critical Next Actions:**
-    - **Clarify CNV Lite Costs on F0 Tier:** Monitor Azure bill/consumption carefully after initial tests or contact Azure Support.
-    - **Proactively Suspend/Delete CNV Endpoint:** Make this a regular practice when the endpoint is not in active use to manage costs.
+- Key 1: 5GHzuW3TDlmnwXkLnwU0cwCNVgAdXDmfuKDrZHbMGcMusNDg4AeWJQQJ99BEACYeBjFXJ3w3AAAYACOG5wrJ
 
+- Endpoint: https://eastus.api.cognitive.microsoft.com/
